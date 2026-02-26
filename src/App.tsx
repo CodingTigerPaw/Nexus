@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <div>start Nexus</div>
+      <div className="bg-blue-500">start Nexus</div>
     </>
   );
 }
