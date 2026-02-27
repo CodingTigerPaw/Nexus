@@ -2,6 +2,7 @@ import LandingPage from ".";
 
 const landingPageRoute = {
   path: "/",
+
   element: <LandingPage />,
 };
 
