@@ -1,39 +1,19 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
-const string FrontendDevOrigin = "http://localhost:5173";
+namespace Nexus.Api;
 
-builder.Services.AddOpenApi();
-builder.Services.AddCors(options =>
+public class Program
 {
-    options.AddPolicy("frontend-dev", policy =>
+    public static void Main(string[] args)
     {
-        policy.WithOrigins(FrontendDevOrigin)
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
-});
+        CreateHostBuilder(args).Build().Run();
+    }
 
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-    app.UseCors("frontend-dev");
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
 }
-
-app.UseHttpsRedirection();
-app.MapGet("/health", () => Results.Ok(new
-{
-    status = "ok",
-    service = "Nexus.Api",
-    timestamp = DateTimeOffset.UtcNow
-}));
-
-app.MapGet("/api/info", () => Results.Ok(new
-{
-    name = "Nexus API",
-    frontendOrigin = FrontendDevOrigin,
-    environment = app.Environment.EnvironmentName
-}));
-
-app.Run();

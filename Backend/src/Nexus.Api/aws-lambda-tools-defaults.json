@@ -1,0 +1,15 @@
+{
+  "Information": [
+    "Default values for deployment to AWS Lambda.",
+    "Run 'dotnet lambda help' for all available options."
+  ],
+  "profile": "",
+  "region": "",
+  "configuration": "Release",
+  "framework": "net8.0",
+  "function-runtime": "dotnet8",
+  "function-memory-size": 512,
+  "function-timeout": 30,
+  "function-handler": "Nexus.Api::Nexus.Api.LambdaEntryPoint::FunctionHandlerAsync",
+  "stack-name": "nexus-api"
+}
