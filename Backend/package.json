@@ -1,0 +1,10 @@
+{
+  "name": "backend",
+  "private": true,
+  "scripts": {
+    "dev": "dotnet watch --project src/Nexus.Api/Nexus.Api.csproj run",
+    "build": "dotnet build Nexus.sln",
+    "test": "dotnet test Nexus.sln --no-build",
+    "lint": "dotnet format Nexus.sln --verify-no-changes"
+  }
+}
