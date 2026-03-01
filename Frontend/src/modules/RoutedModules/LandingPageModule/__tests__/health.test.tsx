@@ -1,7 +1,7 @@
 import { render, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { server } from "../../../testing/mocks/server";
+import { server } from "../../../../testing/mocks/server";
 import LandingPage from "../index";
 
 describe("LandingPage", () => {

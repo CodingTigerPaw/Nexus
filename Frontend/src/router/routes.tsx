@@ -1,5 +1,5 @@
 import type RouteConfig from "./routeInteface.ts";
-import landingPageRoute from "../modules/LandingPageModule/module.export.tsx";
+import landingPageRoute from "../modules/RoutedModules/LandingPageModule/module.export.tsx";
 import userInfoRoute from "../modules/userInfoModule/module.export.tsx";
 import DiceRollerRoute from "../modules/DiceRollerModule/module.export.tsx";
 
