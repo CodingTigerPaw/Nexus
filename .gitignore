@@ -11,3 +11,8 @@ Backend/**/obj
 
 *.log
 .DS_Store
+.env
+.env.*
+!.env.example
+!Backend/.env.example
+!Backend/src/Nexus.Api/.env.example

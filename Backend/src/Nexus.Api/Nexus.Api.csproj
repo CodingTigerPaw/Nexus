@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="9.2.1" />
+    <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="4.0.5.1" />
   </ItemGroup>
 
 </Project>
