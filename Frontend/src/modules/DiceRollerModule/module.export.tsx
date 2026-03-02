@@ -1,7 +1,6 @@
-import DiceRoller from "./DiceRoller";
 const DiceRollerRoute = {
-  element: <DiceRoller />,
   path: "/dice",
+  loadComponent: () => import("./DiceRoller"),
 };
 
 export default DiceRollerRoute;

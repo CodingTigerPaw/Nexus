@@ -1,21 +1,20 @@
 version: 1
-applications:
-  - appRoot: Frontend
-    frontend:
-      buildPath: /
-      phases:
-        preBuild:
-          commands:
-            - npm install -g pnpm@9.9.0
-            - pnpm install --frozen-lockfile
-        build:
-          commands:
-            - pnpm --filter frontend build
-      artifacts:
-        baseDirectory: Frontend/dist
-        files:
-          - "**/*"
-      cache:
-        paths:
-          - node_modules/**/*
-          - Frontend/node_modules/**/*
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm use 20
+        - npm install -g pnpm@9.9.0
+        - pnpm install --frozen-lockfile
+    build:
+      commands:
+        - pnpm exec turbo run build --filter=frontend
+  artifacts:
+    baseDirectory: Frontend/dist
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - node_modules/**/*
+      - .turbo/**/*
+      - Frontend/node_modules/**/*
