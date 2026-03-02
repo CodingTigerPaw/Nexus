@@ -1,8 +1,6 @@
-import LandingPage from ".";
-
 const landingPageRoute = {
   path: "/",
-  element: <LandingPage />,
+  loadComponent: () => import("."),
 };
 
 export default landingPageRoute;

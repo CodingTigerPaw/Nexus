@@ -1,8 +1,6 @@
-import UserInfoModule from ".";
-
 const userInfoRoute = {
   path: "/userInfo",
-  element: <UserInfoModule />,
+  loadComponent: () => import("."),
 };
 
 export default userInfoRoute;
