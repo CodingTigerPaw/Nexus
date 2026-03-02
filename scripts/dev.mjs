@@ -2,15 +2,19 @@ import { spawn } from "node:child_process";
 
 const stripAnsi = (value) => value.replace(/\u001B\[[0-9;]*m/g, "");
 
-const child = spawn(
-  process.platform === "win32" ? "pnpm.cmd" : "pnpm",
-  ["exec", "turbo", "run", "dev", "--parallel"],
-  {
-    cwd: process.cwd(),
-    env: process.env,
-    stdio: ["inherit", "pipe", "pipe"],
-  },
-);
+const child =
+  process.platform === "win32"
+    ? spawn("pnpm exec turbo run dev --parallel", {
+        cwd: process.cwd(),
+        env: process.env,
+        stdio: ["inherit", "pipe", "pipe"],
+        shell: true,
+      })
+    : spawn("pnpm", ["exec", "turbo", "run", "dev", "--parallel"], {
+        cwd: process.cwd(),
+        env: process.env,
+        stdio: ["inherit", "pipe", "pipe"],
+      });
 
 const urls = {
   frontend: "http://localhost:5173/",
@@ -47,7 +51,9 @@ const handleChunk = (chunk, target) => {
   const text = stripAnsi(String(chunk));
   const frontendMatch = text.match(/Local:\s+(https?:\/\/[^\s]+)/);
   const backendMatch = text.match(/Now listening on:\s+(https?:\/\/[^\s]+)/);
-  const backendStartedMatch = text.includes("Application started. Press Ctrl+C to shut down.");
+  const backendStartedMatch = text.includes(
+    "Application started. Press Ctrl+C to shut down.",
+  );
 
   if (frontendMatch) {
     urls.frontend = frontendMatch[1];
@@ -80,6 +86,11 @@ const handleChunk = (chunk, target) => {
 
 child.stdout.on("data", (chunk) => handleChunk(chunk, process.stdout));
 child.stderr.on("data", (chunk) => handleChunk(chunk, process.stderr));
+
+child.on("error", (error) => {
+  console.error("Failed to start dev processes:", error);
+  process.exit(1);
+});
 
 child.on("exit", (code, signal) => {
   if (summaryTimer) clearTimeout(summaryTimer);
