@@ -11,3 +11,4 @@ Backend/**/obj
 
 *.log
 .DS_Store
+/US/*
