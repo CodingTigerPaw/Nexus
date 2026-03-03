@@ -25,12 +25,7 @@ public class AuthController : ControllerBase
 
             if (!result.IsAuthenticated)
             {
-                return Conflict(new
-                {
-                    message = "Authentication requires an additional Cognito challenge.",
-                    challengeName = result.ChallengeName,
-                    session = result.Session,
-                });
+                return Conflict(CreateChallengeResponse(result));
             }
 
             return Ok(new LoginResponse
@@ -85,12 +80,7 @@ public class AuthController : ControllerBase
 
             if (!result.IsAuthenticated)
             {
-                return Conflict(new
-                {
-                    message = "Authentication requires an additional Cognito challenge.",
-                    challengeName = result.ChallengeName,
-                    session = result.Session,
-                });
+                return Conflict(CreateChallengeResponse(result));
             }
 
             return Ok(new LoginResponse
@@ -130,5 +120,25 @@ public class AuthController : ControllerBase
                 message = exception.Message,
             });
         }
+    }
+
+    private static object CreateChallengeResponse(CognitoAuthenticationResult result)
+    {
+        return new
+        {
+            message = "Authentication requires an additional Cognito challenge.",
+            challengeName = result.ChallengeName,
+            session = result.Session,
+            requiredAction = MapRequiredAction(result.ChallengeName),
+        };
+    }
+
+    private static string MapRequiredAction(string? challengeName)
+    {
+        return challengeName switch
+        {
+            "NEW_PASSWORD_REQUIRED" => "COMPLETE_NEW_PASSWORD",
+            _ => "HANDLE_COGNITO_CHALLENGE",
+        };
     }
 }
