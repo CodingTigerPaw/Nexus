@@ -4,9 +4,9 @@ using Amazon;
 using Amazon.CognitoIdentityProvider;
 using Amazon.CognitoIdentityProvider.Model;
 using Microsoft.Extensions.Options;
-using Nexus.Api.Options;
+using Nexus.Api.Auth.Options;
 
-namespace Nexus.Api.Services;
+namespace Nexus.Api.Auth.Services;
 
 public class CognitoAuthenticationService : ICognitoAuthenticationService
 {

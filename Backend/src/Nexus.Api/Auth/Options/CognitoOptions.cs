@@ -1,4 +1,4 @@
-namespace Nexus.Api.Options;
+namespace Nexus.Api.Auth.Options;
 
 public class CognitoOptions
 {

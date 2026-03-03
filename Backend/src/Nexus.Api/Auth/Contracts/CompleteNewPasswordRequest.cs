@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Nexus.Api.Contracts.Auth;
+namespace Nexus.Api.Auth.Contracts;
 
 public class CompleteNewPasswordRequest
 {

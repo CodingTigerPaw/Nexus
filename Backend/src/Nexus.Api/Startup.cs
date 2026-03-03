@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Nexus.Api.Options;
-using Nexus.Api.Services;
+using Nexus.Api.Auth.Options;
+using Nexus.Api.Auth.Services;
 
 namespace Nexus.Api;
 

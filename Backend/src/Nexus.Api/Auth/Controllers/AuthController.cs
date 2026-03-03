@@ -1,9 +1,9 @@
 using Amazon.CognitoIdentityProvider.Model;
 using Microsoft.AspNetCore.Mvc;
-using Nexus.Api.Contracts.Auth;
-using Nexus.Api.Services;
+using Nexus.Api.Auth.Contracts;
+using Nexus.Api.Auth.Services;
 
-namespace Nexus.Api.Controllers;
+namespace Nexus.Api.Auth.Controllers;
 
 [ApiController]
 [Route("api/auth")]

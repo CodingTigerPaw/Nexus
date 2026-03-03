@@ -1,13 +1,7 @@
-namespace Nexus.Api.Services;
+namespace Nexus.Api.Auth.Contracts;
 
-public class CognitoAuthenticationResult
+public class LoginResponse
 {
-    public bool IsAuthenticated { get; init; }
-
-    public string? ChallengeName { get; init; }
-
-    public string? Session { get; init; }
-
     public string AccessToken { get; init; } = string.Empty;
 
     public string IdToken { get; init; } = string.Empty;

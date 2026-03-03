@@ -1,4 +1,4 @@
-namespace Nexus.Api.Services;
+namespace Nexus.Api.Auth.Services;
 
 public interface ICognitoAuthenticationService
 {
