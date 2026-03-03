@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nexus.Api.Auth.Options;
+using Nexus.Api.Auth.Services;
 
 namespace Nexus.Api;
 
@@ -25,6 +27,8 @@ public class Startup
             .GetSection("Cors:AllowedOrigins")
             .Get<string[]>() ?? ["http://localhost:5173"];
 
+        services.Configure<CognitoOptions>(_configuration.GetSection(CognitoOptions.SectionName));
+        services.AddSingleton<ICognitoAuthenticationService, CognitoAuthenticationService>();
         services.AddControllers();
         services.AddRouting();
         services.AddCors(options =>
