@@ -2,8 +2,8 @@ import {
   optionalVariant,
   type StyleConfig,
   type VariantProps,
-} from "../applyStyles";
-export const CardStyles = {
+} from "../../applyStyles";
+export const CheckboxStyles = {
   base: "rounded-lg shadow-md p-4 bg-white",
   variants: {
     background: optionalVariant({
@@ -13,4 +13,4 @@ export const CardStyles = {
   },
 } as const satisfies StyleConfig;
 
-export type CardVariantProps = VariantProps<typeof CardStyles>;
+export type CheckboxVariantProps = VariantProps<typeof CheckboxStyles>;

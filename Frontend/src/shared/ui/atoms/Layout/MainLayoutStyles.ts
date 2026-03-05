@@ -2,9 +2,9 @@ import {
   optionalVariant,
   type StyleConfig,
   type VariantProps,
-} from "../applyStyles";
+} from "../../applyStyles";
 
-export const TextBoxStyles = {
+export const MainLayoutStyles = {
   base: "rounded-md font-medium transition-colors",
   variants: {
     size: {
@@ -19,4 +19,4 @@ export const TextBoxStyles = {
   },
 } as const satisfies StyleConfig;
 
-export type TextBoxVariantProps = VariantProps<typeof TextBoxStyles>;
+export type MainLayoutVariantProps = VariantProps<typeof MainLayoutStyles>;

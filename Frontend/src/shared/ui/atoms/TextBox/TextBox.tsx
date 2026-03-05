@@ -1,5 +1,5 @@
 import React from "react";
-import { applyStyles } from "../applyStyles.ts";
+import { applyStyles } from "../../applyStyles.ts";
 import { TextBoxStyles, type TextBoxVariantProps } from "./TextBoxStyles.ts";
 
 type TextBoxProps = {

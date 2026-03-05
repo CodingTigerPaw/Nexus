@@ -1,21 +1,19 @@
-import React from "react";
-import { applyStyles } from "../applyStyles";
+import { applyStyles } from "../../applyStyles";
 import { CheckboxStyles, type CheckboxVariantProps } from "./CheckboxStyles";
 
 type CheckboxProps = {
-  children: React.ReactNode;
   className?: string;
 };
 
 type StyledCheckboxProps = CheckboxVariantProps & CheckboxProps;
 
-const Checkbox = ({ children, className, ...props }: StyledCheckboxProps) => {
+const Checkbox = ({ className, ...props }: StyledCheckboxProps) => {
   const resolvedClassName = applyStyles({
     className,
     config: CheckboxStyles,
     props,
   });
-  return <div className={resolvedClassName}>{children}</div>;
+  return <input type="checkbox" className={resolvedClassName} {...props} />;
 };
 
 export default Checkbox;

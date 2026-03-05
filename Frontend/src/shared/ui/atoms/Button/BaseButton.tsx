@@ -1,4 +1,4 @@
-import { applyStyles } from "../applyStyles";
+import { applyStyles } from "../../applyStyles";
 import { buttonStyles, type ButtonVariantProps } from "./BaseButtonStyles";
 
 //TODO osobny typ buttonProps z propsami funkcjoonalnami jak children onClick itp

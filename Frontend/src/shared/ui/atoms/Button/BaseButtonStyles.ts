@@ -2,9 +2,9 @@ import {
   optionalVariant,
   type StyleConfig,
   type VariantProps,
-} from "../applyStyles";
+} from "../../applyStyles";
 
-export const InputStyles = {
+export const buttonStyles = {
   base: "rounded-md font-medium transition-colors",
   variants: {
     size: {
@@ -12,11 +12,16 @@ export const InputStyles = {
       medium: "px-8 py-2 text-base",
       large: "px-6 py-3 text-lg",
     },
-    variant: {},
+    variant: {
+      primary:
+        "bg-[#281246] border-solid border-[#9D50BB] border-[3px]   text-[#D4AF37]",
+      secondary: "bg-slate-200 text-slate-900",
+      tertiary: "border border-slate-300 bg-white text-slate-900",
+    },
     hover: optionalVariant({
       true: "hover:bg-slate-700",
     }),
   },
 } as const satisfies StyleConfig;
 
-export type InputVariantProps = VariantProps<typeof InputStyles>;
+export type ButtonVariantProps = VariantProps<typeof buttonStyles>;

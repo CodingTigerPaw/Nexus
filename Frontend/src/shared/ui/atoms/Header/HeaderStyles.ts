@@ -2,9 +2,9 @@ import {
   optionalVariant,
   type StyleConfig,
   type VariantProps,
-} from "../applyStyles";
+} from "../../applyStyles";
 
-export const LinkStyles = {
+export const HeaderStyles = {
   base: "rounded-md font-medium transition-colors",
   variants: {
     size: {
@@ -19,4 +19,4 @@ export const LinkStyles = {
   },
 } as const satisfies StyleConfig;
 
-export type LinkVariantProps = VariantProps<typeof LinkStyles>;
+export type HeaderVariantProps = VariantProps<typeof HeaderStyles>;

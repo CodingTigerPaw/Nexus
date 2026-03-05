@@ -1,5 +1,5 @@
 import React from "react";
-import { applyStyles } from "../applyStyles";
+import { applyStyles } from "../../applyStyles";
 import { HeaderStyles, type HeaderVariantProps } from "./HeaderStyles";
 
 type CardProps = {

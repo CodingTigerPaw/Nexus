@@ -33,7 +33,9 @@ type VariantValues<T extends VariantDefinition> =
       : never;
 
 type VariantPropType<T extends VariantDefinition> =
-  keyof VariantValues<T> extends "true" | "false"
+  [keyof VariantValues<T>] extends [never]
+    ? never
+    : keyof VariantValues<T> extends "true" | "false"
     ? boolean
     : keyof VariantValues<T>;
 
@@ -47,9 +49,18 @@ type OptionalVariantKeys<TVariants extends VariantDefinitions> = VariantKeys<
   OptionalVariant
 >;
 
+type NonEmptyVariantKeys<TVariants extends VariantDefinitions> = {
+  [K in keyof TVariants]: VariantPropType<TVariants[K]> extends never ? never : K;
+}[keyof TVariants];
+
 type RequiredVariantKeys<TVariants extends VariantDefinitions> = Exclude<
-  keyof TVariants,
-  OptionalVariantKeys<TVariants>
+  Exclude<keyof TVariants, OptionalVariantKeys<TVariants>>,
+  Exclude<keyof TVariants, NonEmptyVariantKeys<TVariants>>
+>;
+
+type OptionalNonEmptyVariantKeys<TVariants extends VariantDefinitions> = Extract<
+  OptionalVariantKeys<TVariants>,
+  NonEmptyVariantKeys<TVariants>
 >;
 
 export type VariantProps<TConfig extends StyleConfig> =
@@ -60,7 +71,7 @@ export type VariantProps<TConfig extends StyleConfig> =
     >;
   } & // Opcjonalne warianty
   {
-    [K in OptionalVariantKeys<TConfig["variants"]>]?: VariantPropType<
+    [K in OptionalNonEmptyVariantKeys<TConfig["variants"]>]?: VariantPropType<
       TConfig["variants"][K]
     >;
   };

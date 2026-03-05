@@ -58,4 +58,9 @@
   --color-danger-800: #9b1738;
   --color-danger-900: #841833;
   --color-danger-950: #490817;
+
+  --color-void: #9d50bb;
+  --color-void-light: #c2aace;
+  --color-purple-void: #281246;
+  --color-muted-gold: #d4af37;
 }
