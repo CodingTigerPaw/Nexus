@@ -6,7 +6,7 @@ import {
 
 export const InputStyles = {
   base: `rounded-md font-medium
-  transition-colors placeholder:text-gray-500 placeholder:italic
+  bg-white placeholder:text-gray-500 placeholder:italic
   focus:placeholder-transparent p-0.5 focus:bg-void-light
 focus:border-void outline-none focus:ring-2 focus:ring-void
   disabled:cursor-not-allowed disabled:opacity-50

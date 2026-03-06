@@ -1,30 +1,33 @@
-import React from "react";
+import type { InputHTMLAttributes } from "react";
 import Label from "../atoms/Label/Label";
 import Input from "../atoms/Input/Input";
 import Checkbox from "../atoms/checkbox/Checkbox";
 
-type TextProps = {
+type BaseFieldProps = {
   label: string;
+  inputProps?: InputHTMLAttributes<HTMLInputElement>;
+};
+
+type TextProps = {
   type: "text";
   placeholder?: string;
-};
+} & BaseFieldProps;
 
 type CheckboxProps = {
-  label: string;
   type: "checkbox";
-};
+} & BaseFieldProps;
 
-type Props = TextProps | CheckboxProps;
+export type FormFieldProps = TextProps | CheckboxProps;
 
-const FormField = (props: Props) => {
-  const { label, type } = props;
+const FormField = (props: FormFieldProps) => {
+  const { label, type, inputProps } = props;
   return (
     <div>
       <Label>{label}</Label>
       {type === "checkbox" ? (
-        <Checkbox />
+        <Checkbox {...inputProps} />
       ) : (
-        <Input placeholder={props.placeholder} />
+        <Input type={type} placeholder={props.placeholder} {...inputProps} />
       )}
     </div>
   );

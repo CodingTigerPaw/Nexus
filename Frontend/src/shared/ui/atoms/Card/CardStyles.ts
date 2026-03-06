@@ -7,8 +7,7 @@ export const CardStyles = {
   base: "rounded-lg shadow-md p-4 bg-white",
   variants: {
     background: optionalVariant({
-      red: "bg-red-800",
-      blue: "bg-blue-800",
+      lightVoid: "bg-void-light",
     }),
   },
 } as const satisfies StyleConfig;
