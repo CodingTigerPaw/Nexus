@@ -32,10 +32,11 @@ type VariantValues<T extends VariantDefinition> =
       ? T
       : never;
 
-type VariantPropType<T extends VariantDefinition> =
-  [keyof VariantValues<T>] extends [never]
-    ? never
-    : keyof VariantValues<T> extends "true" | "false"
+type VariantPropType<T extends VariantDefinition> = [
+  keyof VariantValues<T>,
+] extends [never]
+  ? never
+  : keyof VariantValues<T> extends "true" | "false"
     ? boolean
     : keyof VariantValues<T>;
 
@@ -50,7 +51,9 @@ type OptionalVariantKeys<TVariants extends VariantDefinitions> = VariantKeys<
 >;
 
 type NonEmptyVariantKeys<TVariants extends VariantDefinitions> = {
-  [K in keyof TVariants]: VariantPropType<TVariants[K]> extends never ? never : K;
+  [K in keyof TVariants]: VariantPropType<TVariants[K]> extends never
+    ? never
+    : K;
 }[keyof TVariants];
 
 type RequiredVariantKeys<TVariants extends VariantDefinitions> = Exclude<
@@ -58,10 +61,8 @@ type RequiredVariantKeys<TVariants extends VariantDefinitions> = Exclude<
   Exclude<keyof TVariants, NonEmptyVariantKeys<TVariants>>
 >;
 
-type OptionalNonEmptyVariantKeys<TVariants extends VariantDefinitions> = Extract<
-  OptionalVariantKeys<TVariants>,
-  NonEmptyVariantKeys<TVariants>
->;
+type OptionalNonEmptyVariantKeys<TVariants extends VariantDefinitions> =
+  Extract<OptionalVariantKeys<TVariants>, NonEmptyVariantKeys<TVariants>>;
 
 export type VariantProps<TConfig extends StyleConfig> =
   // Wymagane warianty
@@ -69,8 +70,7 @@ export type VariantProps<TConfig extends StyleConfig> =
     [K in RequiredVariantKeys<TConfig["variants"]>]: VariantPropType<
       TConfig["variants"][K]
     >;
-  } & // Opcjonalne warianty
-  {
+  } & { // Opcjonalne warianty
     [K in OptionalNonEmptyVariantKeys<TConfig["variants"]>]?: VariantPropType<
       TConfig["variants"][K]
     >;

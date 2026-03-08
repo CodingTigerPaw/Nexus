@@ -15,19 +15,20 @@ type TextProps = {
 
 type CheckboxProps = {
   type: "checkbox";
+  placeholder?: never;
 } & BaseFieldProps;
 
 export type FormFieldProps = TextProps | CheckboxProps;
 
 const FormField = (props: FormFieldProps) => {
-  const { label, type, inputProps } = props;
+  const { label, type, placeholder, inputProps } = props;
   return (
     <div>
       <Label>{label}</Label>
       {type === "checkbox" ? (
         <Checkbox {...inputProps} />
       ) : (
-        <Input type={type} placeholder={props.placeholder} {...inputProps} />
+        <Input type={type} placeholder={placeholder} {...inputProps} />
       )}
     </div>
   );
