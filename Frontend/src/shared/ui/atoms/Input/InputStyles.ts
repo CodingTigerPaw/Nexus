@@ -4,6 +4,7 @@ import {
   type VariantProps,
 } from "../../applyStyles";
 
+// Variant map for Input primitive.
 export const InputStyles = {
   base: `rounded-md font-medium
   bg-white placeholder:text-gray-500 placeholder:italic

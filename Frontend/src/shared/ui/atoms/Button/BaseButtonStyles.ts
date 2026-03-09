@@ -4,6 +4,7 @@ import {
   type VariantProps,
 } from "../../applyStyles";
 
+// Declarative variant map consumed by applyStyles().
 export const buttonStyles = {
   base: "rounded-md font-medium transition-colors",
   variants: {

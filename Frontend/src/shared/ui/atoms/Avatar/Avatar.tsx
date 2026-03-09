@@ -9,6 +9,7 @@ type AvatarProps = {
 
 type StyledAvatarProps = AvatarVariantProps & AvatarProps;
 
+// Avatar image primitive with variant-driven sizing and theming.
 const Avatar = ({ className, src, ...props }: StyledAvatarProps) => {
   const resolvedClassName = applyStyles({
     className,

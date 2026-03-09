@@ -1,3 +1,4 @@
+// Public utilities surface for DiceRoller module.
 export * from "./constants";
 export * from "./refs";
 export * from "./initialization";

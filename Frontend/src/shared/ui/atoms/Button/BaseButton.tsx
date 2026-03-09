@@ -11,9 +11,7 @@ type BaseButtonProps = ButtonVariantProps &
     icon?: string;
   };
 
-// className custom nadpisanie styli
-// w ...props są wszstkie recznie wpisane style do komponentu
-// onClick nie jest uzywany w applyStyles bo nie jest stylem, ale jest potrzebny do buttona
+// Primitive button that composes visual variants with native button props.
 
 const BaseButton = ({
   className,

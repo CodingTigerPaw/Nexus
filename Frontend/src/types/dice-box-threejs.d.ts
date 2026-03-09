@@ -1,3 +1,4 @@
+// Minimal ambient typings for library APIs used in DiceRoller.
 declare module "@3d-dice/dice-box-threejs" {
   export interface DiceBoxConfig {
     assetPath?: string;

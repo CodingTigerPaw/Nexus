@@ -17,6 +17,7 @@ type ButtonProps = {
 
 export type FormButtonProps = SubmitProps | ResetProps | ButtonProps;
 
+// Form-friendly wrapper with submit as default behavior.
 const FormButton = (props: FormButtonProps) => {
   const { type = "submit", ...buttonProps } = props;
 

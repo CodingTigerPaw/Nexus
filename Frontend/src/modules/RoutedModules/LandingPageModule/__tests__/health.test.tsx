@@ -4,6 +4,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { server } from "../../../../testing/mocks/server";
 import LandingPage from "../index";
 
+// Basic integration-style test scaffold for LandingPage + mocked API.
 describe("LandingPage", () => {
   afterEach(() => {
     vi.restoreAllMocks();

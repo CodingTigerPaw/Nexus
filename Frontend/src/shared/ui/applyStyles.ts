@@ -1,6 +1,9 @@
 import { twMerge } from "tailwind-merge";
 
-// Uproszczone typy - mniej zagnieżdżonych typów warunkowych
+// Shared style engine:
+// - receives a style config (base + variants),
+// - infers variant prop types for components,
+// - merges final Tailwind classes with twMerge.
 type VariantValueMap = Record<string, string>;
 
 type OptionalVariant<TValues extends VariantValueMap = VariantValueMap> = {

@@ -1,5 +1,6 @@
 import "./App.css";
 
+// Legacy Vite starter component (router entrypoint lives in main.tsx).
 function App() {
   return (
     <>

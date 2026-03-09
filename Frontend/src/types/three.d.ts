@@ -1,3 +1,4 @@
+// Narrowed Three.js declarations needed by this project.
 declare module "three" {
   export class Camera {
     position: { x: number; y: number; z: number };

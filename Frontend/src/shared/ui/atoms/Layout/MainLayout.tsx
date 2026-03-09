@@ -12,6 +12,7 @@ type MainLayoutProps = {
 
 type StyledMainLayoutProps = MainLayoutVariantProps & MainLayoutProps;
 
+// Page/container primitive for high-level layout composition.
 const MainLayout = ({
   children,
   className,

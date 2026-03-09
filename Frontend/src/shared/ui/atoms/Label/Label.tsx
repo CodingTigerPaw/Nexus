@@ -9,6 +9,7 @@ type LabelProps = {
 
 type StyledLabelProps = LabelVariantProps & LabelProps;
 
+// Label primitive paired with form controls.
 const Label = ({ children, className, ...props }: StyledLabelProps) => {
   const resolvedClassName = applyStyles({
     className,

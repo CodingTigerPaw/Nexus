@@ -12,6 +12,8 @@ import {
   useDiceRollerRefs,
 } from "./DiceRollerUtils";
 
+// Main orchestration component for the 3D dice workflow:
+// notation parsing -> style preparation -> roll -> repaint.
 const DiceRoller = () => {
   const { diceContainerRef, diceBoxRef, textureLoaderRef, textureCacheRef } =
     useDiceRollerRefs();
@@ -46,6 +48,8 @@ const DiceRoller = () => {
       );
 
       const applyStyles = () => applyStylePlan(box, preparedStylePlan);
+      // During animation we repaint style repeatedly, because the underlying
+      // library can replace materials while physics simulation is running.
       repaintInterval = window.setInterval(applyStyles, REPAINT_INTERVAL_MS);
 
       const combinedResult = await box.roll(standardNotation);

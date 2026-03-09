@@ -9,6 +9,7 @@ type CardProps = {
 
 type StyledHeaderProps = HeaderVariantProps & CardProps;
 
+// Typographic primitive for headings in the design system.
 const Header = ({ children, className, ...props }: StyledHeaderProps) => {
   const resolvedClassName = applyStyles({
     className,

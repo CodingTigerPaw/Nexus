@@ -7,6 +7,7 @@ import type {
 } from "../DiceRollerTypes";
 import { DEFAULT_EMISSIVE_INTENSITY } from "./constants";
 
+// Defensive type-guard for third-party material objects.
 const isCloneable = (obj: unknown): obj is CloneableMaterial =>
   typeof obj === "object" && obj !== null && "clone" in obj;
 
@@ -33,6 +34,7 @@ const processNode = (
   rootNode: Object3D & { material?: unknown },
   applyMaterial: (material: MaterialWithExtensions) => void,
 ) => {
+  // Iterative DFS avoids recursion depth issues on complex mesh trees.
   const stack: Array<Object3D & { material?: unknown }> = [rootNode];
 
   while (stack.length > 0) {

@@ -3,6 +3,7 @@ import landingPageRoute from "../modules/RoutedModules/LandingPageModule/module.
 import userInfoRoute from "../modules/RoutedModules/userInfoModule/module.export.tsx";
 import DiceRollerRoute from "../modules/DiceRollerModule/module.export.tsx";
 
+// Single route registry for the whole app.
 const routes: RouteConfig[] = [
   landingPageRoute,
   DiceRollerRoute,

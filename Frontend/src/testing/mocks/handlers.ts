@@ -1,5 +1,6 @@
 import { http, HttpResponse } from "msw";
 
+// Test handlers emulate backend endpoints used by UI tests.
 export const handlers = [
   http.get("http://localhost:5080/health", () => {
     const response = {

@@ -4,6 +4,7 @@ import {
   type VariantProps,
 } from "../../applyStyles";
 
+// Variant map for Header primitive.
 export const HeaderStyles = {
   base: "rounded-md font-medium transition-colors",
   variants: {

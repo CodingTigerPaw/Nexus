@@ -6,6 +6,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement>;
 
 type StyledInputProps = InputVariantProps & InputProps;
 
+// Input primitive that supports both native and variant props.
 const Input = ({ className, ...restProps }: StyledInputProps) => {
   const resolvedClassName = applyStyles({
     className,

@@ -3,6 +3,7 @@ import { Texture, TextureLoader } from "three";
 import type { PreparedStylePlanEntry, StylePlanEntry } from "../DiceRollerTypes";
 import { TEXTURE_BASE_PATH } from "./constants";
 
+// Loads a texture and fails fast when the source is unavailable for too long.
 const loadTextureWithTimeout = (
   textureName: string,
   loader: TextureLoader,
@@ -33,6 +34,7 @@ export const loadTexture = async (
   textureCacheRef: MutableRefObject<Record<string, Texture>>,
   timeoutMs: number = 5000,
 ): Promise<Texture> => {
+  // In-memory cache avoids repeated network and GPU uploads.
   const cached = textureCacheRef.current[textureName];
   if (cached) return cached;
 
@@ -51,6 +53,7 @@ export const prepareStylePlanWithTextures = async (
   textureLoaderRef: MutableRefObject<TextureLoader>,
   textureCacheRef: MutableRefObject<Record<string, Texture>>,
 ): Promise<PreparedStylePlanEntry[]> => {
+  // Resolve all texture entries before roll starts, so styling is deterministic.
   const textureEntries = stylePlan.filter((entry) => entry.kind === "texture");
   const nonTextureEntries = stylePlan.filter((entry) => entry.kind !== "texture");
 

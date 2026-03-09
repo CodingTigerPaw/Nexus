@@ -4,6 +4,7 @@ import {
   type VariantProps,
 } from "../../applyStyles";
 
+// Variant map for TextBox primitive.
 export const TextBoxStyles = {
   base: "rounded-md font-medium transition-colors",
   variants: {

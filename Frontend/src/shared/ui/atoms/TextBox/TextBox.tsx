@@ -9,6 +9,7 @@ type TextBoxProps = {
 
 type StyledTextBoxProps = TextBoxVariantProps & TextBoxProps;
 
+// Text container rendered as anchor to support linked text blocks.
 const TextBox = ({ children, className, ...props }: StyledTextBoxProps) => {
   const resolvedClassName = applyStyles({
     className,

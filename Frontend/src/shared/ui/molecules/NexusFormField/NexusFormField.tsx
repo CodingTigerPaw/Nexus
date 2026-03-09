@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import type {
   FieldValues,
+  Path,
   UseFormRegister,
   UseFormRegisterReturn,
 } from "react-hook-form";
@@ -15,25 +16,30 @@ type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
   ? Omit<T, K>
   : never;
 
-type NexusFormFieldProps<P extends object> = DistributiveOmit<
+type NexusFormFieldProps<
+  P extends object,
+  TFieldValues extends FieldValues = FieldValues,
+> = DistributiveOmit<
   P,
   "name" | "onChange" | "onBlur" | "ref" | "inputProps"
 > & {
   component: ComponentType<P>;
-  register: UseFormRegister<FieldValues>;
-  fieldName: string;
+  register: UseFormRegister<TFieldValues>;
+  fieldName: Path<TFieldValues>;
   injectRegister?: RegisterInjection<P>;
   validators?: ZodTypeAny | ZodTypeAny[];
 };
 
-const NexusFormField = <P extends object>({
+// Generic bridge between react-hook-form registration and custom UI components.
+const NexusFormField = <P extends object, TFieldValues extends FieldValues>({
   component: Component,
   register,
   fieldName,
   injectRegister = "spread",
   validators,
   ...props
-}: NexusFormFieldProps<P>) => {
+}: NexusFormFieldProps<P, TFieldValues>) => {
+  // Accept either one validator or a list and evaluate all of them.
   const zodValidators = validators
     ? Array.isArray(validators)
       ? validators
@@ -44,6 +50,7 @@ const NexusFormField = <P extends object>({
     fieldName,
     zodValidators.length > 0
       ? {
+          // Aggregates all validation messages into one string for simple display.
           validate: (value) => {
             const errorMessages: string[] = [];
 
@@ -64,6 +71,7 @@ const NexusFormField = <P extends object>({
   );
 
   const injectedProps: Partial<P> =
+    // Injection mode lets the same wrapper work with different component APIs.
     injectRegister === "inputProps"
       ? ({ inputProps: registration } as unknown as Partial<P>)
       : injectRegister === "spread"

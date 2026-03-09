@@ -6,6 +6,7 @@ interface ClickHandlerDependencies {
   diceContainerRef: MutableRefObject<HTMLDivElement | null>;
 }
 
+// Reroll is allowed only when dice exist and no animation is in progress.
 const isClickable = (
   box: InteractiveDiceBox | null,
 ): box is InteractiveDiceBox => Boolean(box?.diceList?.length && !box.rolling);
@@ -29,6 +30,7 @@ export const useDiceClickHandler = ({
   diceBoxRef,
   diceContainerRef,
 }: ClickHandlerDependencies) => {
+  // Local debounce prevents duplicate reroll calls from fast double clicks.
   const lastClickTime = useRef(0);
   const CLICK_DEBOUNCE_MS = 100;
 

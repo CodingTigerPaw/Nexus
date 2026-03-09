@@ -1,5 +1,6 @@
 import DiceBox from "@3d-dice/dice-box-threejs";
 
+// Shared type contracts for DiceRoller component and utility pipeline.
 export type InteractiveDiceBox = DiceBox;
 
 export type EnhancedTerm = {

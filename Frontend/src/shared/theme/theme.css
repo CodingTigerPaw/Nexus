@@ -1,3 +1,4 @@
+/* Design tokens exposed as Tailwind @theme variables. */
 @theme {
   --color-brand-50: #eef6ff;
   --color-brand-100: #d9ebff;

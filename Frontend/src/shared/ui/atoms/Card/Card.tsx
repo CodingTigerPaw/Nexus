@@ -9,6 +9,7 @@ type CardProps = {
 
 type StyledCardProps = CardVariantProps & CardProps;
 
+// Card primitive with optional theme variants.
 const Card = ({ children, className, ...props }: StyledCardProps) => {
   const resolvedClassName = applyStyles({
     className,

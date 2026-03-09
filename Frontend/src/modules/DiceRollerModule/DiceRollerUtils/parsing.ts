@@ -1,5 +1,10 @@
 import type { EnhancedTerm, StylePlanEntry } from "../DiceRollerTypes";
 
+// Extended notation supports:
+// - plain term: 2d6
+// - color term: 2d6#ff0000
+// - texture term: 1d20@marble
+// - deterministic outcomes: !1,2 or @1,2 for full roll.
 const NOTATION_REGEX =
   /^(\d*)d(\d+)(?:(#([0-9a-fA-F]{6}))|@([a-zA-Z0-9._-]+))?(?:!([\d,\s]+))?$/;
 

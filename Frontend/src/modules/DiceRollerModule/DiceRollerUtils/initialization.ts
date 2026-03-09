@@ -3,6 +3,7 @@ import DiceBox from "@3d-dice/dice-box-threejs";
 import * as THREE from "three";
 import type { InteractiveDiceBox } from "../DiceRollerTypes";
 
+// One-time setup hook for DiceBox instance and rendering camera.
 export const useDiceBoxInitialization = (
   diceBoxRef: RefObject<InteractiveDiceBox | null>,
 ) => {

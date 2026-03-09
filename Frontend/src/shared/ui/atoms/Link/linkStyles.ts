@@ -4,6 +4,7 @@ import {
   type VariantProps,
 } from "../../applyStyles";
 
+// Variant map for Link primitive.
 export const LinkStyles = {
   base: "rounded-md font-medium transition-colors",
   variants: {

@@ -4,6 +4,7 @@ import {
   type VariantProps,
 } from "../../applyStyles";
 
+// Variant map for Label primitive.
 export const LabelStyles = {
   base: " px-2 rounded-md font-medium transition-colors",
   variants: {

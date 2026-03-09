@@ -4,6 +4,7 @@ import {
   type VariantProps,
 } from "../../applyStyles";
 
+// Variant map for MainLayout primitive.
 export const MainLayoutStyles = {
   base: "rounded-md font-medium transition-colors",
   variants: {

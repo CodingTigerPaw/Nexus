@@ -4,6 +4,7 @@ import {
   type VariantProps,
 } from "../../applyStyles";
 
+// Variant map for Avatar primitive.
 export const AvatarStyles = {
   base: "rounded-md font-medium transition-colors",
   variants: {

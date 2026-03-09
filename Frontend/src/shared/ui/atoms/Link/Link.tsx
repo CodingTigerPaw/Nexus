@@ -9,6 +9,7 @@ type LinkProps = {
 
 type StyledLinkProps = LinkVariantProps & LinkProps;
 
+// Styled anchor primitive from the design system.
 const Link = ({ children, className, ...props }: StyledLinkProps) => {
   const resolvedClassName = applyStyles({
     className,

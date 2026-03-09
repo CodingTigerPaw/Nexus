@@ -9,7 +9,7 @@ type BaseFieldProps = {
 };
 
 type TextProps = {
-  type: "text";
+  type: "text" | "password";
   placeholder?: string;
 } & BaseFieldProps;
 
@@ -20,6 +20,7 @@ type CheckboxProps = {
 
 export type FormFieldProps = TextProps | CheckboxProps;
 
+// UI-level abstraction for the most common labeled input variants.
 const FormField = (props: FormFieldProps) => {
   const { label, type, placeholder, inputProps } = props;
   return (
