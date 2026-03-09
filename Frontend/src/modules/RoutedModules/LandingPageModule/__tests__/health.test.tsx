@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { server } from "../../../../testing/mocks/server";
@@ -19,9 +19,15 @@ describe("LandingPage", () => {
       </MemoryRouter>,
     );
 
+    fireEvent.change(screen.getByPlaceholderText("my placeholder"), {
+      target: { value: "Abcdefg1" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Send" }));
+
     await waitFor(() => {
       expect(consoleSpy).toHaveBeenCalledWith(
-        expect.objectContaining({ test: "test" }),
+        "data",
+        expect.objectContaining({ test: "Abcdefg1" }),
       );
     });
   });
